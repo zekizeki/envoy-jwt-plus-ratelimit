@@ -22,9 +22,9 @@ Example payload
 }
 `
 
-Example token
+Ratelimiting is performed using envoys external rate limit service backed by redis. To update the rate setting edit ratelimitconfig.yaml
 
-Ratelimiting is performed using envoys external rate limit service backed by redis.
+
 
 To run the example...
 
