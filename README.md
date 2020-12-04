@@ -34,6 +34,6 @@ docker-compose up -d
 
 To perform a successful request
 `
-curl -i -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0MjdlMWY1MC0wM2M4LTQ1ZjQtOGU3OS1kMGQzZTEzNTA2MjMiLCJpc3MiOiJlcSIsImV4cCI6MjUxNjIzOTAyMn0.xZGMLRFImFj3spewQ2qEtvaPHbhyHGfC8uKFjc-hIbk" http://localhost:10000/addresses/eq
+curl -i -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0MjdlMWY1MC0wM2M4LTQ1ZjQtOGU3OS1kMGQzZTEzNTA2MjMiLCJpc3MiOiJlcSIsImV4cCI6MjUxNjIzOTAyMn0.xZGMLRFImFj3spewQ2qEtvaPHbhyHGfC8uKFjc-hIbk" http://localhost:10000/
 `
 
