@@ -1,0 +1,7 @@
+domain: rl
+descriptors:
+  - key: authorization_header
+    rate_limit:
+      unit: minute
+      requests_per_unit: 100
+        

@@ -1,0 +1,11 @@
+{"keys":
+    [
+        {
+        "kty":"oct",
+        "kid" : "eq",
+        "alg":"HS256",
+        "use": "sig",
+        "k":"VEVTVF9TRUNSRVRfSktTX0RPX05PVF9VU0VfSU5fTElWRQ=="
+        }
+    ]
+}

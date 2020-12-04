@@ -1,0 +1,57 @@
+version: '3'
+services:
+  envoy:
+    image: envoyproxy/envoy:v1.16.1
+    #command: -c /etc/envoy/envoy.yaml -l debug --component-log-level jwt:debug
+    command: -c /etc/envoy/envoy.yaml 
+    networks:
+      - envoymesh
+    ports:
+      - "10000:10000"
+    expose:
+      - "10000"
+    volumes:
+      - ./envoy.yaml:/etc/envoy/envoy.yaml
+      - ./jwks.json:/etc/envoy/jwks/jwks.json
+  
+  redis:
+    image: redis:alpine
+    networks:
+      - envoymesh
+    expose:
+      - "6379"
+    ports:
+      - "6379:6379"
+
+
+  ratelimit:
+    image: envoyproxy/ratelimit:v1.4.0
+    command: "/bin/ratelimit"
+    ports:
+      - 8081:8081
+      - 6070:6070
+    depends_on:
+      - redis
+    networks:
+      - envoymesh
+    volumes:
+      - ./ratelimit_config.yaml:/data/ratelimit/config/config.yaml
+    environment:
+      - USE_STATSD=false
+      - LOG_LEVEL=error
+      - REDIS_SOCKET_TYPE=tcp
+      - REDIS_URL=redis:6379
+      - RUNTIME_ROOT=/data
+      - RUNTIME_SUBDIRECTORY=ratelimit
+
+  web_service:
+    image: pahud/echo-http-request:latest
+    ports:
+      - "9000:8080"
+    expose: 
+      - "9000"
+    networks:
+        - envoymesh
+
+networks:
+  envoymesh: {}
